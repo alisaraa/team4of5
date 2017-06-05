@@ -1,3 +1,4 @@
+// adapted from https://howtofirebase.com/save-and-query-firebase-data-ed73fb8c6e3a
 var firebase = require('firebase');
 firebase.initializeApp({
  "appName": "AIzaSyCl4pd35HfQuBTph08pgG2S9qXTFRZn1Ag",
