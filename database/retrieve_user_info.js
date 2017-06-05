@@ -1,4 +1,3 @@
-// adapted from https://howtofirebase.com/save-and-query-firebase-data-ed73fb8c6e3a
 var firebase = require('firebase');
 firebase.initializeApp({
  "appName": "AIzaSyCl4pd35HfQuBTph08pgG2S9qXTFRZn1Ag",
@@ -11,7 +10,22 @@ var ref = firebase.app().database().ref();
 var usersRef = ref.child('users');
 
 
-//set
-usersRef.update({
-  "adminuser/first_name": "The Admin"
-});
+var user_login = "ALISA5";
+
+
+var retrieve_user_info = function(user_login){
+  usersRef.child(user_login).once('value', function(snapshot) {
+      var exists = (snapshot.val() !== null);
+      if (exists) {
+        console.log(snapshot.val())
+      }
+      else {
+      	console.log("User not found")
+      };
+      process.exit()
+    });
+};
+
+
+
+retrieve_user_info(user_login);
