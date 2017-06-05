@@ -10,36 +10,18 @@ firebase.initializeApp({
 var ref = firebase.app().database().ref();
 var usersRef = ref.child('users');
 
-var delayedPush = function (user) {
-  return new Promise(function (resolve, reject) {
-    setTimeout(function () {
-      usersRef.push(user)
-        .then(resolve, reject);
-    }, 1);
-  });
-};
 
-delayedPush({
-  name: 'First User',
-  time: (new Date()).getTime()
-})
-.then(function() {
-  return delayedPush({
-    name: 'Second User',
-    time: (new Date()).getTime()
-  });
-})
-.then(function() {
-  return delayedPush({
-    name: 'Third User',
-    time: (new Date()).getTime()
-  });
-})
-.then(function() {
-  usersRef.orderByKey().on('child_added', function(snap) {
-    console.log(snap.getKey(), snap.val());
-  });
-})
-.catch(function(err) {
-  console.log('error', err);
+//set
+usersRef.set({
+  adminuser: {
+    first_name: "Administrator",
+    last_name: "User",
+    role: "admin",
+  },
+  auser: {
+    first_name: "Random",
+    last_name: "User",
+    role: "basic",
+  }
 });
+
