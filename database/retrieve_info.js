@@ -9,7 +9,7 @@ firebase.initializeApp({
 var ref = firebase.app().database().ref();
 
 var subject = 'users'
-var key = 'ALISA9'
+var key = 'Kyle'
 
 
 var retrieve_user_info = function(subject, key){
