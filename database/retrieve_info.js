@@ -14,14 +14,14 @@ var key = 'ALISA9'
 
 var retrieve_user_info = function(subject, key){
   var usersRef = ref.child(subject);
-  var user_login = key;
-  usersRef.child(user_login).once('value', function(snapshot) {
+  var key = key;
+  usersRef.child(key).once('value', function(snapshot) {
       var exists = (snapshot.val() !== null);
       if (exists) {
         console.log(snapshot.val())
       }
       else {
-      	console.log("User not found")
+      	console.log("Subject/key pair not found not found")
       };
       process.exit()
     });
