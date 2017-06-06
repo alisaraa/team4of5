@@ -26,7 +26,7 @@ var check_user = function(user_login,user_first_name, user_last_name, user_role,
       // console.log(exists);
       if (!exists) {
         created = create_user(user_login,user_first_name, user_last_name, user_role, user_password)
-        return 1
+        return;
       }
       else {
         console.log("User already exists; please pick another login name")
@@ -46,7 +46,7 @@ var create_user = function(user_login, user_first_name, user_last_name, user_rol
         }
       });
       console.log("User " + user_login + " created at " + Date.now())
-      return 1
+      return;
 }
 
 check_user(user_login,user_first_name, user_last_name, user_role, user_password);
