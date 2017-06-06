@@ -7,20 +7,21 @@ firebase.initializeApp({
  "storageBucket": "team4of5-8d52e.appspot.com",
 });
 var ref = firebase.app().database().ref();
-var usersRef = ref.child('users');
+
+var subject = 'users'
+var key = 'ALISA9'
 
 
-var user_login = "ALISA5";
-
-
-var retrieve_user_info = function(user_login){
-  usersRef.child(user_login).once('value', function(snapshot) {
+var retrieve_user_info = function(subject, key){
+  var usersRef = ref.child(subject);
+  var key = key;
+  usersRef.child(key).once('value', function(snapshot) {
       var exists = (snapshot.val() !== null);
       if (exists) {
         console.log(snapshot.val())
       }
       else {
-      	console.log("User not found")
+      	console.log("Subject/key pair not found not found")
       };
       process.exit()
     });
@@ -28,4 +29,4 @@ var retrieve_user_info = function(user_login){
 
 
 
-retrieve_user_info(user_login);
+retrieve_user_info(subject, key);

@@ -13,7 +13,7 @@ var ref = firebase.app().database().ref();
 var usersRef = ref.child('users');
 
 
-var user_login = "ALISA2";
+var user_login = "dddd";
 var user_first_name = "Z";
 var user_last_name =  "XdsasX";
 var user_role = "admin";
@@ -22,12 +22,13 @@ var user_role = "admin";
 var check_user = function(user_login,user_first_name, user_last_name, user_role){
   usersRef.child(user_login).once('value', function(snapshot) {
       var exists = (snapshot.val() !== null);
-      console.log(exists);
+      // console.log(exists);
       if (!exists) {
-        create_user(user_login,user_first_name, user_last_name, user_role)
+        created = create_user(user_login,user_first_name, user_last_name, user_role)
       }
       else {
-        process.exit()
+        console.log("User already exists; please pick another login name")
+        process.exit();
       };
     });
 };
@@ -38,9 +39,11 @@ var create_user = function(user_login, user_first_name, user_last_name, user_rol
         first_name: user_first_name,
         last_name: user_last_name,
         role: user_role,
+        create_dtm: Date.now()
         }
       });
-    return 1;
+      console.log("User " + user_login + " created at " + Date.now())
+      process.exit();
 }
 
 check_user(user_login,user_first_name, user_last_name, user_role);
