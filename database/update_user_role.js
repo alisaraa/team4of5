@@ -30,8 +30,8 @@ function update_user_info(user_first_name, user_last_name,user_role, user_email,
         var user_uid = user.uid;
         var thisUserRef = usersRef.child(user_uid);
               thisUserRef.update({
-              first_name: user_first_name,
-              last_name: user_last_name,
+              // first_name: user_first_name,
+              // last_name: user_last_name,
               role: user_role,
               last_login_dtm: Date.now(),
 
