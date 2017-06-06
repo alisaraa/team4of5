@@ -25,11 +25,12 @@ function sign_in_user(user_email, user_pass){
 		firebase.auth().onAuthStateChanged(function(user) {
 		  if (user) {
 		    console.log("user " + user.uid + " logged in");
-		          usersRef.update({
-			        [user.uid]: {
+		    var user_uid = user.uid;
+		    var thisUserRef = usersRef.child(user_uid);
+
+		          thisUserRef.update({
 			        display_name: user.displayName,
 			        last_login_dtm: Date.now(),
-			        }
      		});
       		return;
 		  } 
